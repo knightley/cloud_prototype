@@ -1,3 +1,11 @@
 language: c
-before_script: cd c_testcase/basic
-script: make
+
+before_script:
+  - cd c_testcase/basic
+
+env:
+  - ENV_VAR=''
+  
+stage: compile
+script:
+  - make
