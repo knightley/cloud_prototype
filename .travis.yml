@@ -6,7 +6,7 @@ before_script:
   - pwd
   - echo $HOME
   - echo $PATH
-  - export PATH=$PATH:$HOME/knightley/public_demo_benchmark/bin
+  - export PATH=$PATH:$HOME/build/knightley/public_demo_benchmark/bin
   - echo $PATH
   - cd c_testcase/basic
 
