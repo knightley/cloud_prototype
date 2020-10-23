@@ -2,8 +2,11 @@ language: c
 
 before_script:
   #TODO 1: 下载agent安装包，agent安装包放在哪里？理想：wget/curl下载安装
-  - echo $PATH
+  - ls
   - echo $HOME
+  - echo $PATH
+  - export PATH=$PATH:$HOME/knightley/public_demo_benchmark/bin
+  - echo $PATH
   - cd c_testcase/basic
 
 env:
@@ -12,6 +15,8 @@ env:
 stage: compile
 script:
   - make
+  - xcalagent.sh
+  - submit_task.sh
   #TODO 2: - ./xcal-agent.py -ac ../workdir/run.conf -pc xxx/xxx/xcal-preprocess.conf -a (artifact put in one place)
   #TODO 3: - 一个完整的preprocess conf，所有扫描依赖的信息都放到preprocess conf中，保证demo benchmark能够跑通
   #TODO 4: - 重新审视task context，保证demo benchmark能够使用xvsa跑起来。xvsa的输出位置。
