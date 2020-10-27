@@ -10,6 +10,8 @@
     },
     "task_fileinfo_json": "fileinfo.json",
     "task_preprocess_tar": "preprocess.tar.gz",
-    "task_source_code_zip": "source_code.zip"
+    "task_source_code_zip": "source_code.zip",
+    "task_summary_pdf": "task_summary.pdf",
+    "task_issues_csv": "task_issues.csv"
 }
 
