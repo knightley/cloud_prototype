@@ -9,6 +9,8 @@ before_script:
   - export PATH=$PATH:$HOME/build/knightley/public_demo_benchmark/bin
   - echo $PATH
   - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -xf xcal-agent.tgz -C $HOME/build
+  - export PYTHONPATH=$HOME/build/xcal-agent/agent:$HOME/build/xcal-agent/agent/commondef/src
+  - echo $PYTHONPATH
   - ls
   - pwd
   - cd c_testcase/basic
