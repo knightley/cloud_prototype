@@ -2,6 +2,8 @@ language: c
 
 before_script:
   #TODO 1: 下载agent安装包，agent安装包放在哪里？理想：wget/curl下载安装
+  - apt install -y bear
+  - which bear
   - ls
   - pwd
   - echo $HOME
