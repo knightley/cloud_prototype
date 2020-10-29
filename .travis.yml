@@ -3,15 +3,15 @@ language: c
 before_script:
   #TODO 1: 下载agent安装包，agent安装包放在哪里？理想：wget/curl下载安装
   - sudo apt update
-  - sudo apt install -y bear
-  - which bear
+  - sudo apt install -y cmake
   - ls
   - pwd
   - echo $HOME
   - echo $PATH
   - export PATH=$PATH:$HOME/build/knightley/public_demo_benchmark/bin
   - echo $PATH
-  - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -xf xcal-agent.tgz -C $HOME/build
+  - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -xf xcal-agent.tgz -C $HOME/build && cd $HOME/build/xcal-agent/xcalbuild/linux/bear && mkdir build && cd build && cmake .. && make && sudo make install
+  - which bear
   - export PYTHONPATH=$HOME/build/xcal-agent/agent:$HOME/build/xcal-agent/agent/commondef/src
   - echo $PYTHONPATH
   - ls
