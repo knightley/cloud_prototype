@@ -8,7 +8,7 @@ before_script:
   - echo $PATH
   - export PATH=$PATH:$HOME/build/knightley/public_demo_benchmark/bin
   - echo $PATH
-  - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -zxf xcal-agent.tgz 
+  - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -xf xcal-agent.tgz 
   - ls
   - pwd
   - cd c_testcase/basic
