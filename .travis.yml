@@ -8,7 +8,7 @@ before_script:
   - echo $PATH
   - export PATH=$PATH:$HOME/build/knightley/public_demo_benchmark/bin
   - echo $PATH
-  - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -xf xcal-agent.tgz 
+  - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -xf xcal-agent.tgz -C $HOME/build
   - ls
   - pwd
   - cd c_testcase/basic
@@ -21,6 +21,7 @@ script:
   - make
   - xcalagent.sh
   - submit_task.sh
+  - $HOME/build/xcal-agent/tools/xcal-agent.py -h
   #TODO 2: - ./xcal-agent.py -ac ../workdir/run.conf -pc xxx/xxx/xcal-preprocess.conf -a (artifact put in one place)
   #TODO 3: - 一个完整的preprocess conf，所有扫描依赖的信息都放到preprocess conf中，保证demo benchmark能够跑通
   #TODO 4: - 重新审视task context，保证demo benchmark能够使用xvsa跑起来。xvsa的输出位置。
