@@ -24,8 +24,8 @@ script:
   - xcalagent.sh
   - submit_task.sh
   - $HOME/build/xcal-agent/tools/xcal-agent.py -a -d
-  - cat /home/travis/build/knightley/public_demo_benchmark/c_testcase/basic/.xcalagent/2da0a2f8-5bd3-4051-9316-bad4b398da23/xcalagent.log
-  - cat /home/travis/build/knightley/public_demo_benchmark/c_testcase/basic/.xcalagent/2da0a2f8-5bd3-4051-9316-bad4b398da23/xcalbuild.log
+  - AGENT_LOG=$(find . -name xcalagent.log) && cat $AGENT_LOG
+  - BUILD_LOG=$(find . -name xcalbuild.log) && cat $BUILD_LOG
   #TODO 2: - ./xcal-agent.py -ac ../workdir/run.conf -pc xxx/xxx/xcal-preprocess.conf -a (artifact put in one place)
   #TODO 3: - 一个完整的preprocess conf，所有扫描依赖的信息都放到preprocess conf中，保证demo benchmark能够跑通
   #TODO 4: - 重新审视task context，保证demo benchmark能够使用xvsa跑起来。xvsa的输出位置。
