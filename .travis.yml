@@ -16,7 +16,7 @@ before_script:
   - echo $PYTHONPATH
   - ls
   - pwd
-  - cd c_testcase/basic
+  - cd /home/travis/build/knightley/public_demo_benchmark/c_testcase/basic
 
 env:
   - ENV_VAR=''
