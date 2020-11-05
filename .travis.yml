@@ -8,7 +8,7 @@ before_script:
   - pwd
   - echo $HOME
   - echo $PATH
-  - export PATH=$PATH:$HOME/build/knightley/public_demo_benchmark/bin
+  - export PATH=$PATH:$HOME/build/knightley/cloud_prototype/bin
   - echo $PATH
   - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -xf xcal-agent.tgz -C $HOME/build && cd $HOME/build/xcal-agent/xcalbuild/linux/bear && sudo rm -rf build && mkdir build && cd build && cmake .. && make && sudo make install
   - which bear
@@ -16,10 +16,10 @@ before_script:
   - echo $PYTHONPATH
   - ls
   - pwd
-  - cd /home/travis/build/knightley/public_demo_benchmark/c_testcase/basic
+  - cd /home/travis/build/knightley/cloud_prototype/c_testcase/basic
 
 env:
-  - ENV_VAR=''
+  - USER_ID='knightley'
   
 stage: compile
 script:
