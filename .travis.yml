@@ -19,7 +19,6 @@ before_script:
   - cd /home/travis/build/knightley/cloud_prototype/c_testcase/basic
 
 env:
-  - ENV_VAR=''
   - USER_ID='knightley'
   
 stage: compile
