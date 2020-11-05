@@ -4,6 +4,7 @@ before_script:
   #TODO 1: 下载agent安装包，agent安装包放在哪里？理想：wget/curl下载安装
   - sudo apt update
   - sudo apt install -y cmake tree
+  - pip3 install boto3
   - ls
   - pwd
   - echo $HOME
@@ -16,6 +17,7 @@ before_script:
   - echo $PYTHONPATH
   - ls
   - pwd
+  - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/submit_task.tgz && tar -zxvf submit_task.tgz -C /home/travis/build/knightley/cloud_prototype && cd /home/travis/build/knightley/cloud_prototype/install && . ./install_submit_task.sh && . ./set_path.sh
   - cd /home/travis/build/knightley/cloud_prototype/c_testcase/basic
 
 env:
@@ -44,4 +46,4 @@ script:
 #TODO 1: 下载agent安装包，agent安装包放在哪里？理想：wget/curl下载安装
 after_success:
   - tree .xcalagent
-  - submit_task.sh
+  - cd "$(dirname "$(find . -type f -name xcal-task.conf | head -1)")" && ls && cat xcal-task.conf && submit_task.sh xcal-task.conf
