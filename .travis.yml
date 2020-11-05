@@ -1,11 +1,9 @@
 language: c
-python:
-  - "3.7"
 
 before_script:
   #TODO 1: 下载agent安装包，agent安装包放在哪里？理想：wget/curl下载安装
   - sudo apt update
-  - sudo apt install -y cmake tree
+  - sudo apt install -y cmake tree python3.8
   - ls
   - python3 --version
   - pwd
