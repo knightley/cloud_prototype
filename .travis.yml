@@ -38,4 +38,4 @@ script:
 
 after_success:
   - tree .xcalagent
-  - cd "$(dirname "$(find . -type f -name xcal-task.conf | head -1)")" && ls && cat xcal-task.conf && submit_task.sh xcal-task.conf
+  - cd "$(dirname "$(find . -type f -name xcal-task.conf | head -1)")" && before_submit.sh && ls && cat xcal-task.conf && submit_task.sh xcal-task.conf
