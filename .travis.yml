@@ -12,6 +12,7 @@ before_script:
   - pyenv global 3.7.1
   - python3 --version
   - which python3
+  - pip3 install requests boto3
   - pwd
   - echo $HOME
   - echo $PATH
