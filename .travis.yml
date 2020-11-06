@@ -3,7 +3,6 @@ language: c
 before_script:
   - sudo apt update
   - sudo apt install -y cmake tree
-  - pip3 install boto3
   - ls
   - python3 --version
   - pwd
@@ -27,7 +26,7 @@ stage: compile
 script:
   - make
   - xcalagent.sh
-  - $HOME/build/xcal-agent/tools/xcal-agent.py -a -d
+  - $HOME/build/xcal-agent/tools/xcal-agent.py -pc $HOME/build/knightley/cloud_prototype/xcal-preprocess.conf -a -d
 
 after_success:
   - tree .xcalagent
