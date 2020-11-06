@@ -5,6 +5,9 @@ before_script:
   - sudo apt install -y cmake tree
   - ls
   - python3 --version
+  - which python3
+  - which pip3
+  - which pip
   - pwd
   - echo $HOME
   - echo $PATH
