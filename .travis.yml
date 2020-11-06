@@ -9,7 +9,7 @@ before_script:
   - which pip3
   - which pip
   - ls /opt/pyenv/shims/
-  - pyenv global python3.7.1
+  - pyenv global 3.7.1
   - python3 --version
   - which python3
   - pwd
