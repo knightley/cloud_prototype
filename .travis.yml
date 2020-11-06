@@ -3,7 +3,7 @@ language: c
 before_script:
   - sudo apt update
   - sudo apt install -y cmake tree
-  - pip install boto3
+  - pip3 install boto3
   - ls
   - python3 --version
   - pwd
