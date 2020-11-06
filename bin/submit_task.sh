@@ -2,6 +2,9 @@
 # set env vars
 . ./env.sh
 
+cd "$(dirname "$(find . -type f -name xcal-task.conf | head -1)")"
+cat xcal-task.conf
+
 # TODO: We need to replace with dynamically setting env vars in CICD env
 # import AWS credentials
 # aws configure import --csv "file://default_credentials.csv"

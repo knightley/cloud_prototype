@@ -1,21 +1,32 @@
 language: c
 
 before_script:
-  #TODO 1: 下载agent安装包，agent安装包放在哪里？理想：wget/curl下载安装
   - sudo apt update
   - sudo apt install -y cmake tree
-  - ls
-  - pwd
-  - echo $HOME
-  - echo $PATH
+#- ls
+#- python3 --version
+#- which python3
+#- which pip3
+#- which pip
+#- ls /opt/pyenv/shims/
+  - pyenv global 3.7.1
+#- python3 --version
+#- which python3
+  - pip3 install requests boto3
+#- pwd
+#- echo $HOME
+#- echo $PATH
   - export PATH=$PATH:$HOME/build/knightley/cloud_prototype/bin
   - echo $PATH
+# install xcal agent
   - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -xf xcal-agent.tgz -C $HOME/build && cd $HOME/build/xcal-agent/xcalbuild/linux/bear && sudo rm -rf build && mkdir build && cd build && cmake .. && make && sudo make install
   - which bear
   - export PYTHONPATH=$HOME/build/xcal-agent/agent:$HOME/build/xcal-agent/agent/commondef/src
   - echo $PYTHONPATH
-  - ls
-  - pwd
+#- ls
+#- pwd
+# install submit task
+  - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/submit_task.tgz && tar -zxvf submit_task.tgz -C /home/travis/build/knightley/cloud_prototype && cd /home/travis/build/knightley/cloud_prototype/install && . ./install_submit_task.sh && . ./set_path.sh
   - cd /home/travis/build/knightley/cloud_prototype/c_testcase/basic
 
 env:
@@ -24,23 +35,8 @@ env:
 stage: compile
 script:
   - make
-  - xcalagent.sh
-  - submit_task.sh
-  - $HOME/build/xcal-agent/tools/xcal-agent.py -a -d
+  - $HOME/build/xcal-agent/tools/xcal-agent.py -pc $HOME/build/knightley/cloud_prototype/xcal-preprocess.conf -a -d
+
+after_success:
   - tree .xcalagent
-#- AGENT_LOG=$(find . -name xcalagent.log) && cat $AGENT_LOG
-#- BUILD_LOG=$(find . -name xcalbuild.log) && cat $BUILD_LOG
-  #TODO 2: - ./xcal-agent.py -ac ../workdir/run.conf -pc xxx/xxx/xcal-preprocess.conf -a (artifact put in one place)
-  #TODO 3: - 一个完整的preprocess conf，所有扫描依赖的信息都放到preprocess conf中，保证demo benchmark能够跑通
-  #TODO 4: - 重新审视task context，保证demo benchmark能够使用xvsa跑起来。xvsa的输出位置。
-  #TODO 5: - submit_task.sh (call submit_task.py with aws credentail and agent artifact)
-  
-
-#order:
-#TODO 3: - 一个完整的preprocess conf，所有扫描依赖的信息都放到preprocess conf中，保证demo benchmark能够跑通
-#TODO 4: - 重新审视task context，保证demo benchmark能够使用xvsa跑起来。xvsa的输出位置。
-
-#TODO 2: - ./xcal-agent.py -ac ../workdir/run.conf -pc xxx/xxx/xcal-preprocess.conf -a (artifact put in one place)
-#TODO 5: - submit_task.sh (call submit_task.py with aws credentail and agent artifact)
-
-#TODO 1: 下载agent安装包，agent安装包放在哪里？理想：wget/curl下载安装
+  - cd "$(dirname "$(find . -type f -name xcal-task.conf | head -1)")" && before_submit.sh && ls && cat xcal-task.conf && submit_task.sh xcal-task.conf
