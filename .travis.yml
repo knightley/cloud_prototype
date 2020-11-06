@@ -3,27 +3,29 @@ language: c
 before_script:
   - sudo apt update
   - sudo apt install -y cmake tree
-  - ls
-  - python3 --version
-  - which python3
-  - which pip3
-  - which pip
-  - ls /opt/pyenv/shims/
+#- ls
+#- python3 --version
+#- which python3
+#- which pip3
+#- which pip
+#- ls /opt/pyenv/shims/
   - pyenv global 3.7.1
-  - python3 --version
-  - which python3
+#- python3 --version
+#- which python3
   - pip3 install requests boto3
-  - pwd
-  - echo $HOME
-  - echo $PATH
+#- pwd
+#- echo $HOME
+#- echo $PATH
   - export PATH=$PATH:$HOME/build/knightley/cloud_prototype/bin
   - echo $PATH
+# install xcal agent
   - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -xf xcal-agent.tgz -C $HOME/build && cd $HOME/build/xcal-agent/xcalbuild/linux/bear && sudo rm -rf build && mkdir build && cd build && cmake .. && make && sudo make install
   - which bear
   - export PYTHONPATH=$HOME/build/xcal-agent/agent:$HOME/build/xcal-agent/agent/commondef/src
   - echo $PYTHONPATH
-  - ls
-  - pwd
+#- ls
+#- pwd
+# install submit task
   - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/submit_task.tgz && tar -zxvf submit_task.tgz -C /home/travis/build/knightley/cloud_prototype && cd /home/travis/build/knightley/cloud_prototype/install && . ./install_submit_task.sh && . ./set_path.sh
   - cd /home/travis/build/knightley/cloud_prototype/c_testcase/basic
 
@@ -33,7 +35,6 @@ env:
 stage: compile
 script:
   - make
-  - xcalagent.sh
   - $HOME/build/xcal-agent/tools/xcal-agent.py -pc $HOME/build/knightley/cloud_prototype/xcal-preprocess.conf -a -d
 
 after_success:
