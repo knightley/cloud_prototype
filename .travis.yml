@@ -6,12 +6,9 @@ before_script:
   - pyenv global 3.7.1
   - pip3 install requests boto3
   - export PATH=$PATH:$HOME/build/knightley/cloud_prototype/bin
-  - echo $PATH
-# install xcal agent
+# install xcal client
   - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/xcal-agent.tgz && tar -xf xcal-agent.tgz -C $HOME/build && cd $HOME/build/xcal-agent/xcalbuild/linux/bear && sudo rm -rf build && mkdir build && cd build && cmake .. && make && sudo make install
-  - which bear
   - export PYTHONPATH=$HOME/build/xcal-agent/agent:$HOME/build/xcal-agent/agent/commondef/src
-  - echo $PYTHONPATH
 # install submit task
   - wget -q https://ci-integration.oss-cn-shanghai.aliyuncs.com/submit_task.tgz && tar -zxvf submit_task.tgz -C /home/travis/build/knightley/cloud_prototype && cd /home/travis/build/knightley/cloud_prototype/install && . ./install_submit_task.sh && . ./set_path.sh
   - cd /home/travis/build/knightley/cloud_prototype/c_testcase/basic
